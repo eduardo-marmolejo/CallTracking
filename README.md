@@ -38,16 +38,6 @@ La información se guarda en `CallTracking.db` (SQLite) en la misma carpeta del 
 
 En el primer arranque se crea `CallTracking.db`. No hay instalador ni servicios adicionales.
 
-## Compilación
-
-```powershell
-dotnet restore CallTracking.slnx
-dotnet build CallTracking.slnx -c Release
-dotnet publish "Call Tracking\CallTracking.csproj" -c Release -r win-x64 --self-contained false -o publish
-```
-
-El resultado portable queda en `publish\`. El ZIP de distribución se genera a partir de esa carpeta.
-
 ## Uso
 
 1. En la pantalla principal, crea un proyecto con su nombre y compañía.
@@ -69,7 +59,7 @@ El contrato del puente es `{ op, requestId, payload } -> { requestId, ok, data |
 
 ## Autor
 
-Eduardo Marmolejo Ornelas.
+Eduardo Marmolejo Ornelas - 2026
 
 ## Licencia
 
