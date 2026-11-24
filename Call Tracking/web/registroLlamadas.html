@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Call Tracking - Detalles del Proyecto</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="tt-header">
+    <div class="tt-header-left">
+        <a class="tt-brand" href="index.html">
+            <!-- img src="././img/TimeTracking-Logo.png" alt="Call Tracking" width="150" -->
+            <img class="tt-logo tt-logo-light" src="./img/CallTracking-LogoLight.png" alt="Call Tracking" width="150">
+            <img class="tt-logo tt-logo-dark" src="./img/CallTracking-LogoDark.png" alt="Call Tracking" width="150">
+            <!--svg class="tt-logo-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="12" cy="12" r="9"></circle>
+      <path d="M12 7v5l3 3" stroke-linecap="round"></path>
+    </svg-->
+            <!-- Call Tracking -->
+        </a>
+      <a class="tt-nav-pill" href="index.html" data-i18n="nav_dashboard">Dashboard</a>
+    </div>
+    <div class="tt-search-container">
+      <svg class="tt-search-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="11" cy="11" r="7"></circle>
+        <path d="m20 20-3.5-3.5" stroke-linecap="round"></path>
+      </svg>
+      <input class="tt-search-input" data-i18n-placeholder="search_placeholder" placeholder="Buscar observaciones, fechas o nombre..." type="text">
+    </div>
+  </header>
+  <main class="tt-main">
+    <div class="tt-breadcrumb-bar">
+      <div>
+        <div class="tt-breadcrumb">
+          <a href="index.html" data-i18n="back_to_dashboard">← Volver al dashboard</a>
+          <span>/</span>
+          <span data-i18n="breadcrumb_dashboard">Dashboard</span>
+          <span>/</span>
+          <span id="project-breadcrumb-name">Proyecto</span>
+        </div>
+        <div class="tt-project-heading-row">
+          <h1 class="tt-project-heading-title" id="project-title" data-i18n="project_loading">Cargando…</h1>
+        </div>
+        <div class="tt-project-subinfo">
+          <span id="project-company">-</span>
+          <span id="project-address">-</span>
+        </div>
+      </div>
+      <div class="tt-stats-bar">
+        <div class="tt-stat-card">
+          <div class="tt-stat-card-label" data-i18n="total_time_invested">
+            Duración Total de Llamada
+          </div>
+          <div class="tt-stat-card-value tt-mono" id="project-total">0<span> h </span>00<span> min</span></div>
+        </div>
+        <button class="tt-btn tt-btn-primary" id="exportPdfBtn" data-i18n="export_pdf">
+          Exportar a PDF
+          <span class="tt-badge-tag">.PDF</span>
+        </button>
+      </div>
+    </div>
+    <div class="tt-table-action-row">
+      <button class="tt-btn tt-btn-primary" id="addRecordBtn" data-i18n="add_record">
+        + Añadir registro
+      </button>
+    </div>
+    <div class="tt-table-wrapper">
+      <table class="tt-table">
+        <thead>
+          <tr>
+            <th scope="col" style="width: 40px;">
+              <div style="display:flex; align-items:center; gap:6px; justify-content:center;">
+                <input type="checkbox" id="tt-select-all" data-i18n-title="select_all_records" title="Seleccionar todo">
+              </div>
+            </th>
+            <th scope="col">
+              <div style="display: flex; align-items: center; gap: 6px;">
+                <span data-i18n="table_date">Fecha</span>
+              </div>
+            </th>
+            <th scope="col">
+              <div style="display:flex; align-items:center; gap:6px;">
+                <span data-i18n="table_start">Inicio</span>
+              </div>
+            </th>
+            <th scope="col">
+              <div style="display:flex; align-items:center; gap:6px;">
+                <span data-i18n="table_duration">Duración</span>
+              </div>
+            </th>
+            <th scope="col">
+              <div style="display:flex; align-items:center; gap:6px;">
+                <span data-i18n="table_name">Nombre</span>
+              </div>
+            </th>
+            <th scope="col">
+              <div style="display:flex; align-items:center; gap:6px;">
+                <span data-i18n="table_contact">Número de Contacto</span>
+              </div>
+            </th>
+            <th scope="col">
+              <div style="display:flex; align-items:center; gap:6px;">
+                <span data-i18n="table_remarks">Observaciones</span>
+              </div>
+            </th>
+            <th scope="col" style="width: 60px;">
+              <div style="display:flex; align-items:center; gap:6px; justify-content:center;">
+                <span data-i18n="table_actions">Acciones</span>
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody id="project-rows">
+          <!-- STATE: ACTIVE INLINE NEW ROW (Highlighted & In Editing Mode) -->
+          <tr class="highlighted" id="activeEditingRow">
+            <td></td>
+            <td>
+              <div class="tt-input-icon-wrap" style="width: 160px;">
+                <input class="tt-input-cell" id="newRowDate" placeholder="MM/DD/AAAA" type="text" style="width:100%;">
+              </div>
+            </td>
+            <td>
+              <input class="tt-input-cell" id="newRowStart" placeholder="08:00 AM" type="text" value="08:00 AM" style="width: 120px;">
+            </td>
+            <td>
+              <input class="tt-input-cell" id="newRowDuracion" placeholder="00:00" type="text" value="00:00" style="width: 90px;">
+            </td>
+            <td>
+              <input class="tt-input-cell" id="newRowNombre" data-i18n-placeholder="name_placeholder" placeholder="Nombre" type="text" style="width: 140px;">
+            </td>
+            <td>
+              <input class="tt-input-cell" id="newRowNumeroContacto" data-i18n-placeholder="contact_placeholder" placeholder="Número de Contacto" type="text" style="width: 140px;">
+            </td>
+            <td>
+              <input class="tt-input-cell" id="newRowRemarks" data-i18n-placeholder="new_row_remarks_placeholder" placeholder="¿En qué has trabajado hoy? Describir tarea..." type="text" style="width: 160px; text-align: left; font-family: var(--font-family); font-size: 13px;">
+            </td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="tt-table-footer-note">
+        <span><span data-i18n="formula_text">Cálculo:</span> <em data-i18n="formula_calc">Duración Total = suma de Duraciones</em></span>
+      </div>
+    </div>
+  </main>
+
+  <div class="tt-modal-backdrop hidden" id="remarksModal" role="dialog" aria-modal="true" aria-labelledby="remarksModalTitle">
+    <div class="tt-modal">
+      <div class="tt-modal-header">
+        <h2 class="tt-modal-title" id="remarksModalTitle" data-i18n="remarks_modal_title">Editar observaciones</h2>
+        <button type="button" class="tt-modal-close" id="remarksModalClose" aria-label="Cerrar">×</button>
+      </div>
+      <div class="tt-modal-body">
+        <textarea class="tt-input-text tt-remarks-textarea" id="remarksModalText" rows="8" data-i18n-placeholder="new_row_remarks_placeholder" placeholder="¿En qué has trabajado hoy? Describir tarea..."></textarea>
+      </div>
+      <div class="tt-modal-actions">
+        <button type="button" class="tt-btn tt-btn-secondary" id="remarksModalCancel" data-i18n="modal_cancel">Cancelar</button>
+        <button type="button" class="tt-btn tt-btn-primary" id="remarksModalAccept" data-i18n="remarks_modal_accept">Aceptar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/bridge.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

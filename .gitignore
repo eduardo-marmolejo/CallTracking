@@ -1,0 +1,23 @@
+# Salidas de compilación / IDE
+bin/
+obj/
+.vs/
+*.user
+*.suo
+*.cache
+
+# Excluidos por instrucción del repositorio
+publish/
+reports/
+backups/
+*.db
+*.db.bak
+*.bak
+
+# Entregables de release (se suben como asset, no al árbol del repo)
+*.zip
+
+# Exportaciones de historial (contienen credenciales expuestas)
+json-de-12263-l-neas.json
+historial-json-del-proyecto-c.json
+separar-html-css-y-js-en-timetacking.json

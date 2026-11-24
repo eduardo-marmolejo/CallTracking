@@ -1,0 +1,61 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <RootNamespace>CallTracking</RootNamespace>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="ico\CallTracking-Icon.ico" />
+    <Content Include="ico\TimeTracking-Icon2.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="10.0.14" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.4314.35" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Datos\Esquema.sql" LogicalName="Esquema.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="web\" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<None Update="web\**\*">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net10.0-windows</TargetFramework>
+		<RootNamespace>CallTracking</RootNamespace>
+		<AssemblyName>CallTracking</AssemblyName>
+		<Nullable>enable</Nullable>
+		<UseWindowsForms>true</UseWindowsForms>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<ApplicationIcon>ico\CallTracking-Icon.ico</ApplicationIcon>
+		
+		<!-- Información de ensamblado -->
+		<AssemblyTitle>Call Tracking</AssemblyTitle>
+		<Description>Aplicación para el control de tiempos por proyecto.</Description>
+		<Company>Eduardo Marmolejo Ornelas</Company>
+		<Product>Call Tracking</Product>
+		<Copyright>Copyright © 2026 Call Tracking</Copyright>
+		<Trademark></Trademark>
+
+		<AssemblyVersion>1.0.0.0</AssemblyVersion>
+		<FileVersion>1.0.0.0</FileVersion>
+		<InformationalVersion>1.0.0</InformationalVersion>
+		<IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+		
+	</PropertyGroup>
+
+</Project>
